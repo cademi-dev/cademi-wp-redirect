@@ -73,9 +73,13 @@ class CademiRedirectCore
 
     public function taxonomyBlock($term, $taxonomy)
     {
-    	return ('_c_r_check' === $taxonomy) ?
-    		new WP_Error('term_addition_blocked', __('Não é possível adicionar categorias aqui.')) :
-    		$term;
+    	if($taxonomy !== '_c_r_check')
+    		return $term;
+
+    	if( ! term_exists('sim', '_c_r_check'))
+    		return $term;
+
+    	return new WP_Error('term_addition_blocked', __('Não é possível adicionar categorias aqui.'));
     }
 
 }
