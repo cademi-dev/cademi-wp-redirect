@@ -6,8 +6,6 @@ A cademí permite a incorporação interna de páginas criadas com Wordpress - E
 
 ## Instalação
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
 * [Baixe o plugin aqui](https://github.com/cademi-dev/wordpress-cademi-redirect/archive/master.zip);
 * Instale e ative o plugin na sua instalação Wordpress;
 * No menu "Cademí - Redirect" insira a url da sua plataforma Cademí;
