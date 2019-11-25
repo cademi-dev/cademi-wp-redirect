@@ -13,8 +13,16 @@ class CademiRedirectCore
 
 	public function check()
 	{
+		 global $wp;
+
 		if(is_admin())
             return; 
+
+        if(strpos($wp->request,'wp-admin') !== false)
+        	return;
+
+        if(isset($_GET['elementor-preview']))
+        	return;
         
         if( ! is_page())
             return;
@@ -28,7 +36,6 @@ class CademiRedirectCore
         if( isset($_GET['cademi_key']) && $_GET['cademi_key'] == $this->options['cademi_key'] )
             return;
 
-        global $wp;
         $url = urlencode(base64_encode(home_url( $wp->request )));
         wp_redirect($this->options['cademi_url'].'/auth/login?redirect=/browse/remote/frame/'.$url);
         exit;
